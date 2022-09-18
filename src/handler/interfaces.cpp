@@ -32,6 +32,7 @@
 #include "settings.h"
 #include "upload.h"
 #include "webget.h"
+#include "generator/config/subscribe.h"
 
 extern WebServer webServer;
 
@@ -146,6 +147,18 @@ std::string getConvertedRuleset(RESPONSE_CALLBACK_ARGS)
     std::string url = urlDecode(getUrlArg(request.argument, "url")), type = getUrlArg(request.argument, "type");
     return convertRuleset(fetchFile(url, parseProxy(global.proxyRuleset), global.cacheRuleset), to_int(type));
 }
+
+std::string saveSubscribe(RESPONSE_CALLBACK_ARGS)
+{
+    std::string subscribeValue = getUrlArg(request.argument, "value");
+    return saveSubscribeValue(urlDecode(subscribeValue));
+}
+
+std::string getSubscribe(RESPONSE_CALLBACK_ARGS)
+{
+    return getSubscribeValue();
+}
+
 
 std::string getRuleset(RESPONSE_CALLBACK_ARGS)
 {
@@ -339,6 +352,7 @@ std::string subconverter(RESPONSE_CALLBACK_ARGS)
 
     /// string values
     std::string argUrl = urlDecode(getUrlArg(argument, "url"));
+    argUrl = SUBSCRIBE_VALUE == argUrl ? getSubscribeValue() : argUrl;
     std::string argGroupName = urlDecode(getUrlArg(argument, "group")), argUploadPath = getUrlArg(argument, "upload_path");
     std::string argIncludeRemark = urlDecode(getUrlArg(argument, "include")), argExcludeRemark = urlDecode(getUrlArg(argument, "exclude"));
     std::string argCustomGroups = urlSafeBase64Decode(getUrlArg(argument, "groups")), argCustomRulesets = urlSafeBase64Decode(getUrlArg(argument, "ruleset")), argExternalConfig = urlDecode(getUrlArg(argument, "config"));

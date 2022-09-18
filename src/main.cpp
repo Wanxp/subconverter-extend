@@ -276,6 +276,9 @@ int main(int argc, char *argv[])
 
     webServer.append_response("GET", "/convert", "text/plain;charset=utf-8", getConvertedRuleset);
 
+    webServer.append_response("POST", "/suburl", "text/plain;charset=utf-8", saveSubscribe);
+    webServer.append_response("GET", "/suburl", "text/plain;charset=utf-8", getSubscribe);
+
     if(!global.APIMode)
     {
         webServer.append_response("GET", "/get", "text/plain;charset=utf-8", [](RESPONSE_CALLBACK_ARGS) -> std::string

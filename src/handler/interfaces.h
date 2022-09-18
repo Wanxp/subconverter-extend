@@ -17,6 +17,8 @@ int simpleGenerator();
 std::string convertRuleset(const std::string &content, int type);
 
 std::string getConvertedRuleset(RESPONSE_CALLBACK_ARGS);
+std::string saveSubscribe(RESPONSE_CALLBACK_ARGS);
+std::string getSubscribe(RESPONSE_CALLBACK_ARGS);
 std::string getProfile(RESPONSE_CALLBACK_ARGS);
 std::string getRuleset(RESPONSE_CALLBACK_ARGS);
 

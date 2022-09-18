@@ -10,6 +10,7 @@
 * * *
 
 ## 新增内容
+**2022/09/18** 增加了订阅方式的保存和获取
 
 2021/10/1
 
@@ -175,7 +176,27 @@ http://127.0.0.1:25500/sub?target=%TARGET%&url=%URL%&config=%CONFIG%
 运行 subconverter 主程序后，按照 [调用说明](#调用说明) 的对应内容替换即可得到一份使用**默认设置**的订阅。
 
 由于此部分篇幅较长，点击下方条目即可展开详解：
+<details>
+<summary><b>保存订阅并获取订阅转换</b></summary>
 
+如果你需要将一份 Surge 订阅转换成 Clash 的订阅, 可以按以下操作：
+
+```txt
+有以下一个订阅，且想转换成 Clash 的订阅:
+1. https://dler.cloud/subscribe/ABCDE?surge=ss
+
+首先将订阅通过 URLEncode 后可以得到:
+https%3A%2F%2Fdler.cloud%2Fsubscribe%2FABCDE%3Fsurge%3Dss
+保存订阅内容
+curl --location --request POST 'http://127.0.0.1:25500/suburl?value=https%3A%2F%2Fdler.cloud%2Fsubscribe%2FABCDE%3Fsurge%3Dss'
+
+然后将想要的 %TARGET% (即 Clash) 和上一步所得到的 %URL% 填入调用地址中:
+http://127.0.0.1:25500/sub?target=clash&url=suburl
+
+最后将该链接填写至 Clash 的订阅处就大功告成了。
+```
+
+</details>
 <details>
 <summary><b>处理单份订阅</b></summary>
 

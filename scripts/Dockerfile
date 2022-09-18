@@ -1,5 +1,5 @@
 FROM alpine:3.16
-LABEL maintainer "tindy.it@gmail.com"
+LABEL maintainer "wanxpgm@gmail.com"
 ARG THREADS="4"
 ARG SHA=""
 

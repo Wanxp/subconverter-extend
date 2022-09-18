@@ -56,7 +56,7 @@ ADD_EXECUTABLE(${BUILD_TARGET_NAME}
     src/utils/regexp.cpp
     src/utils/string.cpp
     src/utils/system.cpp
-    src/utils/urlencode.cpp)
+    src/utils/urlencode.cpp src/generator/config/subscribe.cpp)
 TARGET_INCLUDE_DIRECTORIES(${BUILD_TARGET_NAME} PRIVATE src)
 TARGET_LINK_DIRECTORIES(${BUILD_TARGET_NAME} PRIVATE ${CMAKE_SOURCE_DIR})
 
@@ -128,7 +128,7 @@ ADD_LIBRARY(${BUILD_TARGET_NAME} STATIC
     src/utils/network.cpp
     src/utils/regexp.cpp
     src/utils/string.cpp
-    src/utils/urlencode.cpp)
+    src/utils/urlencode.cpp src/generator/config/subscribe.cpp)
 TARGET_COMPILE_DEFINITIONS(${BUILD_TARGET_NAME} PRIVATE -DNO_JS_RUNTIME -DNO_WEBGET)
 
 TARGET_INCLUDE_DIRECTORIES(${BUILD_TARGET_NAME} PUBLIC src)
